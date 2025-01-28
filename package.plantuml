@@ -1,0 +1,40 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AlohaWorld {
+  - AlohaWorld(): 
+  + main(String[]): void
+}
+class ConsoleView {
+  - ConsoleView(): 
+  + checkRunAgain(): boolean
+  + printGreeting(String): void
+   name: String
+   locality: int
+}
+class Greeter {
+  + Greeter(String, int): 
+  + Greeter(String): 
+  - localityList: List<String>
+  - locality: int
+  - name: String
+  + greet(): String
+  + equals(Object): boolean
+  + greet(boolean): String
+  + hashCode(): int
+  + toString(): String
+   name: String
+   localityList: List<String>
+   locality: int
+   localityString: String
+}
+
+AlohaWorld   -[#595959,dashed]->  ConsoleView 
+AlohaWorld   -[#595959,dashed]->  Greeter     : "«create»"
+ConsoleView  -[#595959,dashed]->  ConsoleView 
+ConsoleView  -[#595959,dashed]->  Greeter     
+Greeter      -[#595959,dashed]->  Greeter     
+@enduml
